@@ -1,1 +1,76 @@
+`timescale 1ns / 1ps
+
+
+
+module evm_tb;
+
+reg clk;
+reg reset;
+reg vote1;
+reg vote2;
+reg vote3;
+reg vote4;
+
+wire[7:0] count1;
+wire[7:0] count2;
+wire[7:0] count3;
+wire[7:0] count4;
+
+// Instantiate EVM Module
+
+evm uut(
+.clk(clk),
+.reset(reset),
+.vote1(vote1),
+.vote2(vote2),
+.vote3(vote3),
+.vote4(vote4),
+.count1(count1),
+.count2(count2),
+.count3(count3),
+.count4(count4)
+);
+
+// Clock Generation
+always #5 clk=~clk;
+
+initial 
+begin
+
+clk = 0;
+reset = 1;
+vote1 = 0;
+vote2 = 0;
+vote3 = 0;
+vote4 = 0;
+
+    // Reset system
+    
+#10 reset=0;
+
+    // Candidate 1 gets 2 votes
+#10 vote1=1;
+#10 vote1=0;
+#10 vote1=1;
+#10 vote1=0;
+// Candidate 2 gets 1 votes
+#10 vote2=1;
+#10 vote2=0;
+// Candidate 3 gets 1 votes
+#10 vote3=1;
+#10 vote3=0;
+// Candidate 4 gets 3 votes
+#10 vote4 = 1;
+#10 vote4 = 0;
+
+#10 vote4 = 1;
+#10 vote4 = 0;
+
+#10 vote4 = 1;
+#10 vote4 = 0;
+#50 $finish;
+
+end
+
+endmodule
 
