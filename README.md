@@ -63,7 +63,7 @@ The waveform confirms correct operation of the voting system:
 
   ## Simulation Waveform
 
-![EVM Waveform](simulation_results/simulation_results_evm.png)
+![EVM Waveform](simulation_results_evm.png)
 
 ---
 
